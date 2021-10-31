@@ -1,7 +1,8 @@
 const express = require('express');
-const { MongoClient } = require('mongodb');
 const cors = require('cors')
 require('dotenv').config()
+const { MongoClient } = require('mongodb');
+const ObjectId = require("mongodb").ObjectId    //why
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -20,10 +21,10 @@ async function run(){
      try{
         await client.connect();
         console.log('database connected successfully')
-        const database = client.db('travelAgency2');
-        const servicesCollection = database.collection('places');
+        const database = client.db('travelAgency');
+        const servicesCollection = database.collection('services');
         
-        //-------------GET Products API
+        //-------------GET Products API-----------
         app.get('/places', async (req, res) => {
             const cursor = servicesCollection.find({});
             const places = await cursor.toArray();
