@@ -34,7 +34,7 @@ async function run(){
         //--------------POST API-------------
         app.post('/places', async(req, res) => {
             const place = req.body;
-            console.log('hit the post api', place)
+            console.log('hit the post API', place)
             
             const result = await servicesCollection.insertOne(place);
             console.log(result)
